@@ -1,0 +1,88 @@
+# Research Agent configuration
+# Customize paths and profiles to match your local knowledge base.
+
+version: 1
+
+index:
+  # Directories to scan for local sources (relative to repo or absolute paths)
+  paths:
+    - 'C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Slack\\Cheat Sheets'
+    - 'C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Slack\\Driving Adoption'
+    - 'C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Slack'
+    - 'C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Onboarding\\Open AI\\Onboarding\\Launch Guides\\prompt packs'
+    - 'C:\\Users\\agrin\\QA\\processed\\platform.openai.com'
+    - 'C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Onboarding\\Open AI\\Onboarding\\Launch Guides\\Guides'
+    - 'C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Onboarding\\Open AI\\Onboarding\\Launch Guides\\Department\\Finance\\Presentation'
+    - 'C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Onboarding\\Open AI\\Onboarding\\Launch Guides\\Communication'
+    - 'C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Articles_Papers'
+    - 'C:\\Users\\agrin\\Obsidian\\local\\Obsidian Vault\\Slack'
+    - 'C:\\Users\\agrin\\Obsidian\\local\\Obsidian Vault\\AI'
+    - 'C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Articles_Papers\\Prompt'
+    - 'C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Articles_Papers\\customer research'
+    - 'C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Articles_Papers\\Introductory Material'
+    - 'C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Articles_Papers\\OpenAI Presentations'
+  # File extensions to index (lowercase, without dot)
+  filetypes: [md, markdown, txt, pdf, docx, pptx, xlsx, csv, json]
+  # Glob patterns to exclude from indexing
+  exclude_globs:
+    - .git/**
+    - node_modules/**
+    - '**/.DS_Store'
+    - '**/*.tmp'
+    - '**/~$*.docx'
+    - assets/**/thumbnails/**
+  # Safety/behavior toggles
+  max_file_size_mb: 25
+  follow_symlinks: false
+  recursive: true
+
+profiles:
+  # Coordinator: strategies, KPIs, roadmaps
+  CA:
+    paths: []
+    filetypes: [md, pdf, docx]
+    query_expansion: [roadmap, strategy, KPI, timeline, adoption]
+    ranking: {recency_boost: 0.2, title_match_boost: 0.5}
+
+  # Executor: runbooks, checklists, procedures
+  EA:
+    paths: []
+    filetypes: [md, txt, py, ps1]
+    query_expansion: [runbook, how-to, procedure, checklist, steps]
+    ranking: {recency_boost: 0.1, title_match_boost: 0.4}
+
+  # Marketing: messaging, objections, campaigns
+  MA:
+    paths: []
+    filetypes: [md, pdf, pptx]
+    query_expansion: [campaign, messaging, objection, security, compliance, case-study]
+    ranking: {recency_boost: 0.15, title_match_boost: 0.4}
+
+  # Up Skilling: training content and exercises
+  USA:
+    paths: []
+    filetypes: [md, pdf, pptx, docx]
+    query_expansion: [training, module, lesson, tutorial, exercise, worksheet]
+    ranking: {recency_boost: 0.2, title_match_boost: 0.3}
+
+  # Events: logistics, venues, schedules
+  EPA:
+    paths: []
+    filetypes: [md, xlsx, docx, pdf]
+    query_expansion: [event, logistics, venue, schedule, catering, registration]
+    ranking: {recency_boost: 0.1, title_match_boost: 0.35}
+
+  # Critic/Reviewer: policies, guidelines, tone, factual checks
+  CRA:
+    paths: []
+    filetypes: [md, pdf, docx]
+    query_expansion: [policy, guideline, tone, factual, review, rubric]
+    ranking: {recency_boost: 0.25, title_match_boost: 0.45}
+
+  # Shared Research Agent default profile
+  RA:
+    paths: []
+    filetypes: [md, markdown, txt, pdf, docx, pptx, xlsx, csv, json]
+    query_expansion: [adoption, training, campaign, security, compliance, workflow]
+    ranking: {recency_boost: 0.2, title_match_boost: 0.4}
+
