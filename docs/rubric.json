@@ -1,0 +1,91 @@
+{
+  "version": "1.0",
+  "description": "Objective rubric for CRA (Critic/Reviewer Agent) to evaluate outputs for non-technical audiences focused on ChatGPT Enterprise adoption.",
+  "score_range": [0, 1],
+  "categories": [
+    {
+      "id": "factual_accuracy",
+      "name": "Factual Accuracy",
+      "weight": 0.30,
+      "pass_min": 0.90,
+      "criteria": [
+        "Claims are correct, current, and evidence-backed",
+        "Statistics cite sources with dates",
+        "No unsupported or absolute guarantees"
+      ]
+    },
+    {
+      "id": "tone_alignment",
+      "name": "Tone Alignment (Non-Technical)",
+      "weight": 0.25,
+      "pass_min": 0.85,
+      "criteria": [
+        "Plain language; avoids jargon and internal acronyms",
+        "Empathetic to skepticism; focuses on quick wins",
+        "Explains risks and mitigations transparently"
+      ]
+    },
+    {
+      "id": "clarity",
+      "name": "Clarity",
+      "weight": 0.15,
+      "pass_min": 0.85,
+      "criteria": [
+        "Logical structure with headings/bullets",
+        "Action-oriented and scannable",
+        "Examples illustrate concepts succinctly"
+      ]
+    },
+    {
+      "id": "actionability",
+      "name": "Actionability",
+      "weight": 0.20,
+      "pass_min": 0.80,
+      "criteria": [
+        "Clear next steps, owners, and timelines",
+        "Includes templates, prompts, or checklists",
+        "Maps to business outcomes (time saved, risk reduced)"
+      ]
+    },
+    {
+      "id": "risk",
+      "name": "Risk & Compliance",
+      "weight": 0.10,
+      "pass_min": 0.80,
+      "criteria": [
+        "No PII exposure or unsafe guidance",
+        "Security statements match enterprise features",
+        "Notes limitations and review workflows"
+      ]
+    }
+  ],
+  "overall": {
+    "pass_threshold": 0.85,
+    "warn_threshold": 0.75,
+    "verdict_bands": [
+      { "verdict": "pass", "min": 0.85 },
+      { "verdict": "warn", "min": 0.75 },
+      { "verdict": "fail", "min": 0.0 }
+    ]
+  },
+  "formatting_requirements": {
+    "structured_output": ["json", "xml"],
+    "required_fields": [
+      "format_version",
+      "artifact_ref",
+      "rubric",
+      "scores",
+      "verdict",
+      "findings",
+      "recommendations",
+      "required_changes",
+      "risk_flags",
+      "confidence"
+    ]
+  },
+  "notes": [
+    "Prioritize trust-building for skeptical non-technical users",
+    "Prefer concrete examples and safe defaults over technical depth"
+  ]
+}
+
