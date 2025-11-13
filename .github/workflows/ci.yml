@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PowerShellGet (for modules)
+        shell: pwsh
+        run: |
+          Set-PSRepository PSGallery -InstallationPolicy Trusted
+          Install-Module powershell-yaml -Scope CurrentUser -Force -ErrorAction SilentlyContinue
+
+      - name: Show repo
+        shell: pwsh
+        run: |
+          Get-ChildItem -Recurse -File | Select-Object -First 5 | Format-Table FullName, Length
+
+      - name: Run research CLI (repo paths)
+        shell: pwsh
+        run: |
+          pwsh -File scripts/research.ps1 -Query "test" -PathsOverride "." -MaxResults 5 | Out-String | Write-Host
+
