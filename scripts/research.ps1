@@ -26,11 +26,34 @@ function Is-TextExtension {
 }
 
 $repoRoot = Split-Path -Parent $PSScriptRoot
-$configPath = Join-Path $repoRoot 'config/research.yaml'
-$cfg = Load-Yaml -Path $configPath
+$configPathYaml = Join-Path $repoRoot 'config/research.yaml'
+$configPathJson = Join-Path $repoRoot 'config/research.json'
+
+function Load-Config {
+  param([string]$YamlPath, [string]$JsonPath)
+
+  $yamlConfig = $null
+  if (Test-Path $YamlPath) {
+    $yamlConfig = Load-Yaml -Path $YamlPath
+  }
+
+  if ($yamlConfig) { return $yamlConfig }
+
+  if (Test-Path $JsonPath) {
+    try {
+      return (Get-Content -Raw -LiteralPath $JsonPath | ConvertFrom-Json)
+    } catch {
+      Write-Warning "Failed to parse $JsonPath: $($_.Exception.Message)"
+    }
+  }
+
+  return $null
+}
+
+$cfg = Load-Config -YamlPath $configPathYaml -JsonPath $configPathJson
 
 if (-not $cfg) {
-  Write-Warning 'ConvertFrom-Yaml is not available. Attempting minimal defaults.'
+  Write-Warning 'No YAML or JSON config could be loaded. Falling back to minimal defaults.'
 }
 
 $indexPaths = @()
