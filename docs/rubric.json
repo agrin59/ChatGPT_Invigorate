@@ -1,91 +1,57 @@
 {
-  "version": "1.0",
-  "description": "Objective rubric for CRA (Critic/Reviewer Agent) to evaluate outputs for non-technical audiences focused on ChatGPT Enterprise adoption.",
-  "score_range": [0, 1],
-  "categories": [
+  "format_version": "1.0",
+  "rubric": [
     {
-      "id": "factual_accuracy",
-      "name": "Factual Accuracy",
-      "weight": 0.30,
-      "pass_min": 0.90,
-      "criteria": [
-        "Claims are correct, current, and evidence-backed",
-        "Statistics cite sources with dates",
-        "No unsupported or absolute guarantees"
+      "name": "factual_accuracy",
+      "description": "All claims cite verifiable internal or public sources. No hallucinations or outdated stats.",
+      "weight": 0.3,
+      "pass_threshold": 0.9,
+      "check": [
+        "Every number, quote, or policy call-out links to a source.",
+        "Dates reference the most recent approved publication (<=12 months)."
       ]
     },
     {
-      "id": "tone_alignment",
-      "name": "Tone Alignment (Non-Technical)",
-      "weight": 0.25,
-      "pass_min": 0.85,
-      "criteria": [
-        "Plain language; avoids jargon and internal acronyms",
-        "Empathetic to skepticism; focuses on quick wins",
-        "Explains risks and mitigations transparently"
+      "name": "tone_alignment",
+      "description": "Reads like a patient coach for non-technical professionals; avoids jargon and blame.",
+      "weight": 0.2,
+      "pass_threshold": 0.85,
+      "check": [
+        "Explains acronyms on first use and replaces engineering slang with plain language.",
+        "Recognizes user skepticism and acknowledges prior frustrations before proposing solutions."
       ]
     },
     {
-      "id": "clarity",
-      "name": "Clarity",
-      "weight": 0.15,
-      "pass_min": 0.85,
-      "criteria": [
-        "Logical structure with headings/bullets",
-        "Action-oriented and scannable",
-        "Examples illustrate concepts succinctly"
+      "name": "clarity",
+      "description": "Structured to scan quickly with headings, bullets, and direct CTAs.",
+      "weight": 0.2,
+      "pass_threshold": 0.85,
+      "check": [
+        "Uses short paragraphs (<80 words) and front-loads key actions.",
+        "Includes summaries for any table, chart, or attachment."
       ]
     },
     {
-      "id": "actionability",
-      "name": "Actionability",
-      "weight": 0.20,
-      "pass_min": 0.80,
-      "criteria": [
-        "Clear next steps, owners, and timelines",
-        "Includes templates, prompts, or checklists",
-        "Maps to business outcomes (time saved, risk reduced)"
+      "name": "actionability",
+      "description": "Provides exact steps, owners, and timing for the recommended action.",
+      "weight": 0.2,
+      "pass_threshold": 0.8,
+      "check": [
+        "Specifies who needs to do what, by when, and with which tool or template.",
+        "Supplies ready-to-use artifacts (links, checklists, snippets)."
       ]
     },
     {
-      "id": "risk",
-      "name": "Risk & Compliance",
-      "weight": 0.10,
-      "pass_min": 0.80,
-      "criteria": [
-        "No PII exposure or unsafe guidance",
-        "Security statements match enterprise features",
-        "Notes limitations and review workflows"
+      "name": "risk",
+      "description": "Flags potential compliance, privacy, or expectation issues before delivery.",
+      "weight": 0.1,
+      "pass_threshold": 0.75,
+      "check": [
+        "Identifies data sensitivity (public/internal/confidential) and required approvals.",
+        "Documents review status from Legal, Security, or CRA as needed."
       ]
     }
   ],
-  "overall": {
-    "pass_threshold": 0.85,
-    "warn_threshold": 0.75,
-    "verdict_bands": [
-      { "verdict": "pass", "min": 0.85 },
-      { "verdict": "warn", "min": 0.75 },
-      { "verdict": "fail", "min": 0.0 }
-    ]
-  },
-  "formatting_requirements": {
-    "structured_output": ["json", "xml"],
-    "required_fields": [
-      "format_version",
-      "artifact_ref",
-      "rubric",
-      "scores",
-      "verdict",
-      "findings",
-      "recommendations",
-      "required_changes",
-      "risk_flags",
-      "confidence"
-    ]
-  },
-  "notes": [
-    "Prioritize trust-building for skeptical non-technical users",
-    "Prefer concrete examples and safe defaults over technical depth"
-  ]
+  "overall_pass": 0.85,
+  "scoring_notes": "Multiply each category score by its weight, sum, and compare to overall_pass. Anything below threshold returns to author with CRA feedback JSON."
 }
-

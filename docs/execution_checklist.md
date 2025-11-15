@@ -1,42 +1,30 @@
-# Executor Agent (EA) – Execution Checklist
+# EA Execution Checklist
 
-Use this checklist for each stage from the CA plan. Keep actions safe, reversible, and easy to understand for non-technical stakeholders.
+Designed for the Executor Agent (EA) to keep every run safe, reversible, and transparent for skeptical, non-technical stakeholders.
 
-## Inputs & Validation
-- [ ] Stage ID and objective confirmed
-- [ ] Tools and parameters listed (from CA plan)
-- [ ] Data sensitivity reviewed; no secrets/PII in samples
-- [ ] Prerequisites checked (access, paths, config)
+## 1. Inputs Confirmed
+- [ ] Request includes **query**, **desired artifact**, and **deadline**.
+- [ ] Constraints documented (data sensitivity, approved sources, reviewers).
+- [ ] Linked templates or historical examples collected for reference.
 
-## Plan & Safety
-- [ ] Dry-run available or sandbox first
-- [ ] Rollback plan defined and documented
-- [ ] Changes are incremental and reversible
+## 2. Safe & Reversible Actions
+- [ ] Start with read-only or sandbox environments; note any escalation before editing production docs.
+- [ ] Capture assumptions before executing automation or scripts.
+- [ ] Timebox risky steps and define a manual rollback plan.
 
-## Execution
-- [ ] Log each step with command/inputs/duration
-- [ ] Capture issues + mitigations inline
-- [ ] Store artifacts with stable IDs and paths
+## 3. Logging & Evidence
+- [ ] Log every command with parameters in the execution report.
+- [ ] Store raw outputs (JSON, CSV, screenshots) under `artifacts/` with timestamps.
+- [ ] Flag anomalies immediately with severity + impact so CRA can review.
 
-## Artifacts
-- [ ] Logs (text) and summaries generated
-- [ ] Outputs named `artifacts/<stage>/...`
-- [ ] Attach evidence links for CRA review
+## 4. Artifacts Produced
+- [ ] Primary deliverable saved in repo or approved SharePoint path with version label.
+- [ ] Supporting artifacts (data pulls, prompt histories, transcripts) cross-linked in the summary.
+- [ ] Access instructions provided for anyone without repo permissions.
 
-## Stakeholder Summary (Plain Language)
-- [ ] What we did (1–2 lines)
-- [ ] Why it matters (business outcome)
-- [ ] Risks/limitations and how we mitigated them
-- [ ] Next actions and owners
+## 5. Plain-Language Summary
+- [ ] Explain what changed, why it matters, and any follow-up needed using non-technical terms.
+- [ ] Highlight quick wins or blockers in the first paragraph.
+- [ ] Close with the next recommended action and owner.
 
-## Handoffs & Reviews
-- [ ] Submit to CRA with rubric reference
-- [ ] Notify MA/USA/EPA if inputs needed
-- [ ] Update CA on status/blockers
-
-## Close-Out
-- [ ] Update AGENTS.md or docs if behavior changed
-- [ ] File paths and parameters recorded for reuse
-- [ ] Back out temporary settings; clean up
-
-Tip: Produce an Execution Report JSON per AGENTS.md (EA schema) for consistent, parsable outputs.
+Complete this checklist before handing work to CRA or stakeholders.

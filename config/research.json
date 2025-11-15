@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "index": {
+    "paths": [
+      "C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Slack\\Cheat Sheets",
+      "C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Slack\\Driving Adoption",
+      "C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Slack",
+      "C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Onboarding\\Open AI\\Onboarding\\Launch Guides\\prompt packs",
+      "C:\\Users\\agrin\\QA\\processed\\platform.openai.com",
+      "C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Onboarding\\Open AI\\Onboarding\\Launch Guides\\Guides",
+      "C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Onboarding\\Open AI\\Onboarding\\Launch Guides\\Department\\Finance\\Presentation",
+      "C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Onboarding\\Open AI\\Onboarding\\Launch Guides\\Communication",
+      "C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Articles_Papers",
+      "C:\\Users\\agrin\\Obsidian\\local\\Obsidian Vault\\Slack",
+      "C:\\Users\\agrin\\Obsidian\\local\\Obsidian Vault\\AI",
+      "C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Articles_Papers\\Prompt",
+      "C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Articles_Papers\\customer research",
+      "C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Articles_Papers\\Introductory Material",
+      "C:\\Users\\agrin\\OneDrive\\Documents\\ChatGpt\\Articles_Papers\\OpenAI Presentations"
+    ],
+    "filetypes": ["md", "markdown", "txt", "pdf", "docx", "pptx", "xlsx", "csv", "json"],
+    "exclude_globs": [
+      ".git/**",
+      "node_modules/**",
+      "**/.DS_Store",
+      "**/*.tmp",
+      "**/~$*.docx",
+      "assets/**/thumbnails/**"
+    ],
+    "max_file_size_mb": 25,
+    "follow_symlinks": false,
+    "recursive": true
+  },
+  "profiles": {
+    "CA": {
+      "paths": [],
+      "filetypes": ["md", "pdf", "docx"],
+      "query_expansion": ["roadmap", "strategy", "KPI", "timeline", "adoption"],
+      "ranking": {"recency_boost": 0.2, "title_match_boost": 0.5}
+    },
+    "EA": {
+      "paths": [],
+      "filetypes": ["md", "txt", "py", "ps1"],
+      "query_expansion": ["runbook", "how-to", "procedure", "checklist", "steps"],
+      "ranking": {"recency_boost": 0.1, "title_match_boost": 0.4}
+    },
+    "MA": {
+      "paths": [],
+      "filetypes": ["md", "pdf", "pptx"],
+      "query_expansion": ["campaign", "messaging", "objection", "security", "compliance", "case-study"],
+      "ranking": {"recency_boost": 0.15, "title_match_boost": 0.4}
+    },
+    "USA": {
+      "paths": [],
+      "filetypes": ["md", "pdf", "pptx", "docx"],
+      "query_expansion": ["training", "module", "lesson", "tutorial", "exercise", "worksheet"],
+      "ranking": {"recency_boost": 0.2, "title_match_boost": 0.3}
+    },
+    "EPA": {
+      "paths": [],
+      "filetypes": ["md", "xlsx", "docx", "pdf"],
+      "query_expansion": ["event", "logistics", "venue", "schedule", "catering", "registration"],
+      "ranking": {"recency_boost": 0.1, "title_match_boost": 0.35}
+    },
+    "CRA": {
+      "paths": [],
+      "filetypes": ["md", "pdf", "docx"],
+      "query_expansion": ["policy", "guideline", "tone", "factual", "review", "rubric"],
+      "ranking": {"recency_boost": 0.25, "title_match_boost": 0.45}
+    },
+    "RA": {
+      "paths": [],
+      "filetypes": ["md", "markdown", "txt", "pdf", "docx", "pptx", "xlsx", "csv", "json"],
+      "query_expansion": ["adoption", "training", "campaign", "security", "compliance", "workflow"],
+      "ranking": {"recency_boost": 0.2, "title_match_boost": 0.4}
+    }
+  }
+}
